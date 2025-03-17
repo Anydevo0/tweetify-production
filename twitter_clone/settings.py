@@ -135,3 +135,7 @@ LOGIN_URL = '/accounts/login'
 
 LOGIN_REDIRECT_URL = '/list/'
 # LOGOUT_REDIRECT_URL = '/logout/'
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://tweetify-django-practice.onrender.com"
+]
