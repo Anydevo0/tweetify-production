@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">{{ profile_user.username }} is Following</h2>
+
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+        {% for user in following %}
+            <div class="col">
+                <div class="card text-center border-0 shadow-sm" style="width: 18rem;">
+                    <a href="{% url 'profile' user.user.username %}" class="text-decoration-none text-dark">
+                        <img class="card-img-top rounded-circle mt-3 mx-auto" 
+                             src="{{ user.avatar.url }}" 
+                             alt="{{ user.user.username }}" 
+                             style="width: 120px; height: 120px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="fw-bold">{{ user.user.username }}</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-center text-muted">Not following anyone yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

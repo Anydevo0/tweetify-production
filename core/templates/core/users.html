@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Suggested Profiles</h2>
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+        {% for profile in profiles %}
+            <div class="col">
+                <div class="card text-center border-0 shadow-sm" style="width: 18rem;">
+                    <a href="{% url 'profile' profile.user.username %}" class="text-decoration-none text-dark">
+                        <img class="card-img-top rounded-circle mt-3 mx-auto" src="{{ profile.avatar.url }}" alt="{{ profile.user.username }}" style="width: 120px; height: 120px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="fw-bold">{{ profile.user.username }}</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

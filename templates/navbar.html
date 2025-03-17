@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top rounded-bottom">
+  <div class="container">
+      <a class="navbar-brand fw-bold text-uppercase">Tweetify</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                  <a class="nav-link active" href="{% url 'home_page' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="{% url 'tweet_list' %}">Tweets</a>
+              </li>
+              {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'display_profiles' %}">People</a>
+                </li>
+              {% endif %}
+          </ul>
+
+          <form class="d-flex me-3" role="search" method="GET" action="{% url 'tweet_list'%}">
+              <input class="form-control me-2" type="search" name="q" placeholder="Search by username..." aria-label="Search">
+              <button class="btn btn-dark" type="submit">Search</button>
+          </form>
+
+          {% if user.is_authenticated %}
+              <div class="dropdown">
+                  <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      {{ user.username }}
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="{% url 'profile' user.username %}">Profile</a></li>
+                      <li><a class="dropdown-item" href="{% url 'my_tweets' %}">My Tweets</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item text-danger" href="{% url 'logout' %}">Logout</a></li>
+                  </ul>
+              </div>
+          {% else %}
+              {% comment %} <a href="{% url 'register' %}" class="btn btn-primary me-2">Register</a> {% endcomment %}
+              <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+          {% endif %}
+      </div>
+  </div>
+</nav>
