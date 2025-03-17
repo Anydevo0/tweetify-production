@@ -18,7 +18,7 @@ def tweet_list(req):
     tweets = Tweet.objects.all().order_by('-created_at')
     if query:
         tweets = tweets.filter(user__username__icontains = query)
-    return render(req, 'core/tweet_list.html', {'tweets': tweets})
+    return render(req, 'core/tweet_list.html', {'tweets': tweets, 'isTweetList': True})
 
 
 def my_tweets(req):
