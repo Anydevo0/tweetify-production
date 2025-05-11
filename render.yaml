@@ -3,4 +3,4 @@ services:
     name: tweetify
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn tweetify_clone.wsgi:application
+    startCommand: gunicorn twitter_clone.wsgi:application
