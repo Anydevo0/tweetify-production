@@ -1,1 +1,1 @@
-web: gunicorn tweetify-production.wsgi
+web: gunicorn tweetify.wsgi:application
