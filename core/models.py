@@ -18,7 +18,12 @@ class Tweet(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     bio = models.TextField(blank=True)
-    avatar = models.ImageField(upload_to='avatars/', default='avatars/default.png', blank=True, null=True)
+    avatar = models.ImageField(
+        upload_to='avatars/', 
+        default='https://res.cloudinary.com/dckkmdfwi/image/upload/v1746972537/default_uskwrr.png', 
+        blank=True, 
+        null=True
+    )
     following = models.ManyToManyField(
         'self',
         symmetrical=False,

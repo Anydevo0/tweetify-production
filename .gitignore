@@ -1,7 +1,11 @@
-venv
+# Cached files
 *.pyc
 __pycache__/
 **/__pycache__/
 *.png
 media
 db.sqlite3
+
+# Environment files
+.env
+.venv
